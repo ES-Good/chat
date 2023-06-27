@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="message-block">
       <ShowMessages :messagesUsers="messages" />
       <SendingMessages />
     </div>

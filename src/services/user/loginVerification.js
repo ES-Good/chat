@@ -9,6 +9,7 @@ export function userLoginVerification(userLocal) {
           // https://firebase.google.com/docs/reference/js/auth.user
           const uid = user;
           userLocal.value = uid.email
+          localStorage.setItem('user', uid.email)
         } else {
          console.log('not user')
         }

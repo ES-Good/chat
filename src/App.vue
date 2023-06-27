@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container content">
     <Header 
     @openModalLogin="showModalLogin"
     @openModalRegistration="showModalRegistration"/>

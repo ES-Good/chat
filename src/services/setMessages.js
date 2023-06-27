@@ -25,5 +25,4 @@ export async function sendMessage(textMessage) {
             id: newMessage.key
         }
     set(newMessage, message);
-
 }
