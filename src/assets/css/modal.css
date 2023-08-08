@@ -1,0 +1,56 @@
+.owerlay-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 10;
+}
+
+
+
+.modal {
+    z-index: 11;
+    position: relative;
+    background-color: #fff;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 10px;
+    padding: 10px 10px 30px;
+    border-radius: 0 0 15px 15px;
+}
+
+
+.form-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-modal__input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.form-modal__error-text {
+    color: red;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.modal-show {
+    display: flex;
+}
+
+.modal-show .modal {
+    animation-name: showModal;
+    animation-duration: 0.5s;
+}

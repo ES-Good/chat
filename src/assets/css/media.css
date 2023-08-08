@@ -1,0 +1,35 @@
+@keyframes showMessage {
+    0% {
+        transform: translateY(50%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes showModal {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .sending-messages-form__button {
+        background-color: #000;
+    }
+
+    .sending-messages-form__button::after {
+        width: 20%;
+        height: 20%;
+        border-color: #fff;
+        background-color: #fff;
+        box-shadow: 0px 0px 12px #2effff;
+    }
+}

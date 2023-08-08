@@ -6,7 +6,7 @@
                     По каким то причинам имя недоступно...
                 </slot>
             </p>
-            
+            <slot name="user-ico"></slot>
         </div>
 
         <p class="user-message__text">
@@ -14,11 +14,28 @@
                 По каким то причинам сообщение недоступно...
             </slot>
         </p>
+
+        <btnDelMessage v-if="thisAdmin" :idMassege="message.id"/>
+        
     </div>
 </template>
 
 <script>
+import btnDelMessage from './btnDelMessage.vue';
+import { ThisIsAdmin } from "@/services/user/chackForAdmin";
+
 export default {
-    emits:['pushMessage']
+    components: { 
+        btnDelMessage 
+    },
+    emits:['pushMessage'],
+    props:{
+        message: Object
+    },
+    computed:{
+        thisAdmin(){
+            return ThisIsAdmin
+        }
+    },
 }
 </script>

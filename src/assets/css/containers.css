@@ -1,0 +1,21 @@
+.container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px 10px;
+}
+
+.container-fluid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.form-container__registered-text {
+    color: green;
+    font-weight: 600;
+    text-align: center;
+}

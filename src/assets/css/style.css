@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,97 +7,32 @@
 }
 
 html,
-body{
+body {
     height: 100vh;
 }
 
-#app{
+#app {
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.container{
-    max-width: 800px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 50px 10px;
-}
+@import url('btn.css');
+@import url('containers.css');
+@import url('sending-messages-form.css');
+@import url('modal.css');
+@import url('side-bar.css');
 
-.header{
+.header {
     width: 100%;
     display: flex;
     align-items: center;
+    padding: 10px 0;
 }
 
-.title{
+.title {
     overflow-wrap: anywhere;
 }
 
-
-.button{
-    background-color: green;
-    color: #fff;
-    padding: 4px 10px;
-    border: none;
-    border-radius: 5px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.button_header{
-    margin-right: 12px;
-}
-
-.button-close-modal{
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #fff;
-    border-left: 1px solid #000;
-    border-top: 1px solid #000;
-    border-right: 1px solid #000;
-    border-bottom: none;
-    padding: 10px 40px;
-    font-size: 0;
-    border-radius: 10px 10px 0 0;
-    cursor: pointer;
-    transition: background-color .3s;
-}
-
-.button-close-modal::after,
-.button-close-modal::before{
-    content: '';
-    position: absolute;
-    background-color: #000;
-    width: 15px;
-    height: 2px;
-    top: 50%;
-    left: 50%;
-    transition: background-color .3s, top .5s;
-}
-
-.button-close-modal:hover{
-    background-color: #000;
-}
-
-.button-close-modal:hover::after,
-.button-close-modal:hover::before{
-    background-color: #fff;
-    top: 40%;
-}
-
-.button-close-modal::before{
-    transform: translateX(-20%) rotate(45deg);
-}
-
-.button-close-modal::after{
-    transform: translateX(-80%) rotate(-45deg);
-}
-
-.messages-wrapper{
+.messages-wrapper {
     height: 400px;
     display: flex;
     flex-direction: column-reverse;
@@ -105,13 +40,17 @@ body{
     margin-bottom: 20px;
 }
 
-.messages-container{
+.messages-wrapper::-webkit-scrollbar {
+    width: 0;
+}
+
+.messages-container {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.user-message{
+.user-message {
     background-color: antiquewhite;
     width: 90%;
     margin: 10px;
@@ -121,185 +60,43 @@ body{
     animation-name: showMessage;
     animation-duration: 0.5s;
     overflow: hidden;
+    position: relative;
 }
 
 
-.user-message__text{
+.user-message__text {
     overflow-wrap: break-word;
 }
 
-.user-message__header{
+.user-message__header {
     background-color: #333;
     padding: 5px 10px;
     margin-left: -10px;
     margin-right: -10px;
     margin-top: -10px;
     margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
 }
 
-.user-message__name-user{
+.user-message__name-user {
     color: #fff;
     overflow-wrap: break-word;
 }
 
-.sending-messages-form{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
+.user-logo {
+    width: 100px;
+    margin-top: -25px;
+    margin-bottom: -25px;
+    margin-left: 4px;
 }
 
-.sending-messages-form__textaria{
-    padding: 10px 53px 10px 10px;
-    resize: none;
-    outline: none;
-    border-radius: 10px;
-    width: 100%;
-    border: 1px solid #000;
-}
-
-
-.sending-messages-form__button{
-    background-color: #fff;
-    outline: none;
-    cursor: pointer;
-    border: none;
-    width: 52px;
-    height: 52px;
-    font-size: 0;
-    padding: 8px 16px;
-    border-radius: 0 10px 10px 0;
-    transition: background-color .3s;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
-    border-right: 1px solid #000;
-}
-
-.sending-messages-form__button::after{
-    content: '';
-    width: 66%;
-    height: 66%;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border: 5px solid #000;
-    border-radius: 50% 50% 50% 0;
-    transition: width .5s, height .5s, background-color .5s, box-shadow .5s, border .5s;
-}
-
-.sending-messages-form__button:hover{
-    background-color: #000;
-}
-
-.sending-messages-form__button:hover::after{
-    width: 20%;
-    height: 20%;
-    border-color: #fff;
-    background-color: #fff;
-    box-shadow: 0px 0px 12px #2effff;
-}
-
-.owerlay-modal{
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    align-items: flex-start;
-    justify-content: center;
-    z-index: 10;
-}
-
-.my-message{
+.my-message {
     align-self: flex-start;
     border-radius: 10px 10px 10px 0;
     background-color: #d8d7fa;
 }
 
-.modal{
-    z-index: 11;
-    position: relative;
-    background-color: #fff;
-    max-width: 500px;
-    width: 100%;
-    margin: 0 10px;
-    padding: 10px 10px 30px;
-    border-radius: 0 0 15px 15px;
-}
-
-
-.form-modal{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.form-modal__input{
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #000;
-    border-radius: 10px;
-    margin: 10px;
-}
-
-.form-modal__error-text{
-    color: red;
-    font-weight: 600;
-    margin: 10px 0;
-}
-
-.form-container__registered-text{
-    color: green;
-    font-weight: 600;
-    text-align: center;
-}
-
-.modal-show{
-    display: flex;
-}
-
-.modal-show .modal{
-    animation-name: showModal;
-    animation-duration: 0.5s;
-}
-  
-@keyframes showMessage {
-    0%{
-        transform: translateY(50%);
-        opacity: 0;
-    }
-    100%{
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes showModal {
-    0%{
-        transform: translateY(-100%);
-    }
-    100%{
-        transform: translateY(0);
-    }
-}
-
-@media screen and (max-width: 576px) {
-    .sending-messages-form__button{
-        background-color: #000;
-    }
-    .sending-messages-form__button::after{
-        width: 20%;
-        height: 20%;
-        border-color: #fff;
-        background-color: #fff;
-        box-shadow: 0px 0px 12px #2effff;
-    }
-}
+@import url('media.css');

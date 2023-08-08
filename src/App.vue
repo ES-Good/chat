@@ -1,18 +1,32 @@
 <template>
-  <div class="container content">
-    <Header 
-    @openModalLogin="showModalLogin"
-    @openModalRegistration="showModalRegistration"/>
+  <div class="container-fluid">
+    <button 
+    v-if="isAdmin"
+    @click="openSidebarAdmin"
+    :class="{'button-sidebar-admin_active': statusSidebarAdmin}" 
+    class="button-sidebar-admin">
+    <span class="button-sidebar-admin__line"></span>
+    </button>
 
-    <MessageContainer/>
+    <SidebarAdmin 
+    v-if="isAdmin"
+    :open="statusSidebarAdmin"/>
 
-    <modal :class="{ 'modal-show' : openModal}" @closeModal="closeModal">
+    <div class="container content">
+      <Header 
+      @openModalLogin="showModalLogin"
+      @openModalRegistration="showModalRegistration"/>
 
-      <LoginUser v-if="modalLogin"/>
+      <MessageContainer/>
 
-      <RegistrationUser v-else/>
-      
-    </modal>
+      <modal :class="{ 'modal-show' : openModal}" @closeModal="closeModal">
+
+        <LoginUser v-if="modalLogin"/>
+
+        <RegistrationUser v-else/>
+        
+      </modal>
+    </div>
   </div>
 </template>
 
@@ -22,6 +36,8 @@ import MessageContainer from './components/messages/MessageContainer.vue';
 import LoginUser from './components/user/LoginUser.vue';
 import Modal from './components/modal/Modal.vue';
 import RegistrationUser from './components/user/RegistrationUser.vue';
+import { promiseChackLoginAdmin } from "./services/user/chackForAdmin";
+import SidebarAdmin from './components/SidebarAdmin.vue';
 
 
 export default {
@@ -31,13 +47,16 @@ export default {
     Modal,
     Header,
     LoginUser,
-    RegistrationUser
-  },
+    RegistrationUser,
+    SidebarAdmin
+},
   data(){
     return{
       openModal: false,
       modalLogin: true,
-      name: ''
+      name: '',
+      statusSidebarAdmin:true,
+      isAdmin:false
     }
   },
   methods:{
@@ -51,7 +70,13 @@ export default {
     },
     closeModal(){
       this.openModal = false
+    },
+    openSidebarAdmin(){
+      this.statusSidebarAdmin = !this.statusSidebarAdmin
     }
+  },
+  async mounted(){
+    promiseChackLoginAdmin.then(res => this.isAdmin = res)
   }
 }
 </script>
